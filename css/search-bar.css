@@ -8,6 +8,7 @@
     outline:none;
     padding-left: 20px;
     font-size: medium;
+    display: inline-block;
 }
 .search-button  {
     margin-left: -51px;
@@ -21,6 +22,7 @@
     font-weight:bold;
     -webkit-appearance: none;
     outline:none;
+    display: inline-block;
 }
 
 @media screen and (max-width:1024px) {
