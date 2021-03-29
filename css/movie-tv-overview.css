@@ -46,8 +46,8 @@
 }
 
 .movie-tv-overview-section-left img{ 
-    max-height: 80%;
-    max-width: 90%;
+    max-height: 80% !important;
+    max-width: 90% !important;
     z-index: 1;
 }
 @media screen and (max-width:1024px) {
@@ -64,8 +64,9 @@
     }
     .movie-tv-overview-section-left img{
         left: 30px; 
-        height: 75%;
-        max-width: none;
+        max-height: 100% !important;
+        height: 85%  !important;
+        max-width: none  !important;
     }
     .movie-tv-other-section-row{
         padding: 0 !important;
