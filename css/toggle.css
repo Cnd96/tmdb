@@ -1,0 +1,85 @@
+/* Toggle buttone css */
+.toogle-button-pill {
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 222px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+.toogle-button-pill .toogle-button-item {
+    height: 30px;
+    width: 110px;
+}
+
+.toogle-button-pill .toogle-button-1 .nav-link:not(.active) {
+    background-color: white;
+    color: #0d253f;
+    height: 30px;
+}
+
+.toogle-button-pill .toogle-button-2 .nav-link:not(.active) {
+    background-color: white;
+    color: #0d253f;
+    height: 30px;
+}
+
+
+/* active (faded) */
+.toogle-button-pill .toogle-button-1 .nav-link {
+    background-color: #0d253f;
+    color: #90cea1;
+    border-radius: 20px;
+    height: 31px;
+    margin-top: -0.1px;
+}
+
+.toogle-button-pill .toogle-button-2 .nav-link {
+    background-color: #0d253f;
+    color: #90cea1;
+    border-radius: 20px;
+    height: 31px;
+    margin-top: -0.1px;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .toogle-button-pill {
+        width: 182px;
+    }
+
+    .toogle-button-pill .toogle-button-item {
+        height: 20px;
+        width: 90px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .toogle-button-pill .toogle-button-1 .nav-link:not(.active) {
+        height: 20px;
+        width: 90px;
+    }
+
+    .toogle-button-1 #toogle-item {
+        padding-top: 2px;
+    }
+
+    .toogle-button-2 #toogle-item {
+        padding-top: 2px;
+    }
+
+    .toogle-button-pill .toogle-button-2 .nav-link:not(.active) {
+        height: 20px;
+    }
+
+    /* active (faded) */
+    .toogle-button-pill .toogle-button-1 .nav-link {
+        height: 21px;
+    }
+
+    .toogle-button-pill .toogle-button-2 .nav-link {
+        height: 21px;
+    }
+
+}

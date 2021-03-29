@@ -1,0 +1,70 @@
+<div class="container-fluid ">
+    <div class="row {{colorClass}} movie-tv-overview-section margin-with-navbar">
+        <div class="col-3 movie-tv-overview-section-left center-image-container">
+            <img class="app-border-radius" src="http://image.tmdb.org/t/p/w500{{tvShowData.posterPath}}">
+        </div>
+        <div class="col-9 movie-tv-overview-section-right " id="tv-bg-poster-id">
+            <div class="md-only-large-view vertical-center padding-left" >
+                <h3>{{tvShowData.title}} ({{tvShowData.realeseDate.substring(0, 4)}})</h3>
+                <p>{{tvShowData.genreString}} • {{tvShowData.runTimeString}}</p>
+                <p><i>{{tvShowData.tagline}}</i></p>
+                <h5>Overview</h5>
+                <p>{{tvShowData.overview}}</p>
+                <crew-container crew="tvShowData.createdBy" />
+            </div>
+        </div>
+
+        <div class="container-fluid md-only-small-view margin-top-three-small">
+            <div class="text-center">
+                <h2>{{tvShowData.title}} </h2>
+                <p>{{tvShowData.realeseDate}} • {{tvShowData.runTimeString}}</p>
+                <p>{{tvShowData.genreString}} </p>
+            </div>
+            <div>
+                <p><i>{{tvShowData.tagline}} </i></p>
+                <h5>Overview</h5>
+                <p>{{tvShowData.overview}}</p>
+                <crew-container crew="tvShowData.createdBy" />
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid movie-tv-other-section">
+        <div class="row movie-tv-other-section-row">
+            <div class="col-md-9 margin-top-three-small">
+                <h4>Series Cast</h4>
+                <cast type="tv"></cast>
+                <hr>
+                <h4>Seasons</h4>
+                <div ng-repeat="season in seasons">
+                    <tv-seasons-horizontal-card seasonno="{{season.seasonNo}}" year="{{season.year}}"
+                        overview="{{season.overview}}" episodes="{{season.episodesCount}}"
+                        posterpath="{{season.posterPath}}"></tv-seasons-horizontal-card>
+                </div>
+            </div>
+            <div class="col-md-3  icons padding-left">
+                <div>
+                    <i class="fa fa-facebook-official"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-instagram"></i>
+                </div>
+                <div >
+                    <h4>Facts</h4>
+                    <h6>Status <span>
+                            <p>{{tvShowData.status}}</p>
+                        </span></h6>
+                    <h6>Netwok <br><img src="https://www.themoviedb.org/t/p/h30{{tvShowData.networkLogo}}"></h6>
+                    <h6>Type <span>
+                            <p>{{tvShowData.type}}</p>
+                        </span></h6>
+                    <h6>Original Language <span>
+                            <p>{{tvShowData.originalLanguage}}</p>
+                        </span></h6>
+                </div>
+                <div>
+                    <h6 class="margin-bottom-zero">Keywords</h6>
+                    <keywords-container type="tv"></keywords-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

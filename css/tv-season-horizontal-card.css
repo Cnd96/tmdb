@@ -1,0 +1,50 @@
+.tv-season-horizontal-card{
+    width: 100%;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+
+.tv-season-description-section{
+    width: 100%;
+}
+.tv-season-horizontal-card .tv-season-description {
+    width: 98% ;
+}
+
+/* Max six line in large view */
+.tv-season-horizontal-card .tv-season-description .overview{
+    text-overflow: ellipsis ;
+    /* line-height: 1.5em;
+    height: 9em; */
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0;
+
+    /* https://caniuse.com/?search=line-clamp   line clamp support browsers */
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+
+/* Media queries */
+@media screen and (max-width: 700px) {
+    .tv-season-horizontal-card  {
+        height: fit-content;
+    }
+    .tv-season-horizontal-card img {
+        display: none;
+    }
+    .tv-season-horizontal-card .tv-season-description {
+        padding: 5px;
+    }
+    .tv-season-horizontal-card .tv-season-description .overview{
+        margin-top:20px;
+        text-overflow: none;
+        /* line-height:unset;
+        height: unset; */
+        -webkit-line-clamp: unset;
+        overflow:auto;
+    }
+}

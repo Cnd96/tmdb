@@ -1,0 +1,21 @@
+<div>
+    <div class="block ">
+        <div class="horizontal-center">
+            <h3 class="vertical-center same-line-text">{{keyWord}}</h3>
+            <h3 class="vertical-center same-line-text float-right" style="color: rgba(227,227,227,1);">{{totalResults}}
+                Movies</h3>
+        </div>
+
+    </div>
+    <div class="app-container  margin-top-four">
+        <div class="app-container-box" >  
+            <div ng-repeat="item in results" style="cursor: pointer;">
+                <movie-tv-horizontal-card title="{{item.title}}" ng-click="onMovieCardClick(item.id)" ng-click="onMovieCardClick(item.id)"
+                    releasedate="{{item.realeseDate}}" overview="{{item.overview}}" posterpath="{{item.posterPath}}" />
+            </div>
+            <pagination-section onpageclick="onPageClick(pageNumber)" currentpage="{{currentPage}}" totalpages="{{totalPages}}"></pagination-section>
+            
+        </div>
+    </div>
+    
+</div>

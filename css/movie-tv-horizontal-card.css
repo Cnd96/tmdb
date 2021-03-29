@@ -1,0 +1,15 @@
+.movie-tv-horizontal-card{
+    width: 100%;
+    min-height: min-content;
+    margin-bottom: 20px;
+}
+
+.movie-tv-horizontal-card div {
+    width: 100%;
+}
+.movie-tv-horizontal-card .movie-tv-horizontal-card-description{
+    width: 98%;
+}
+
+
+

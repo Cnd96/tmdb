@@ -1,0 +1,42 @@
+<div class="app-container margin-top-four" >
+    <div class="row  margin-with-navbar">
+        <div class="col-md-3">
+            <div class="search-results-box app-border app-border-radius" >
+                <div>
+                    <h6 style="padding: 10px ;color: white;">Search Results</h6>
+                </div>
+                <ul class="nav nav-pills search-list-container" style="cursor: pointer;">
+                    <li class="nav-item aaa" ng-click="onItemClick(mediaTypes.movie)">
+                        <h6 class="nav-link active" data-toggle="pill">Movies-{{searchMovies.length}}</h6>
+                    </li>
+                    <li class="nav-item aaa" ng-click="onItemClick(mediaTypes.tvShow)">
+                        <h6 class="nav-link" data-toggle="pill">TV Shows-{{searchTvShows.length}}</h6>
+                    </li>
+                    <li class="nav-item" ng-click="onItemClick(mediaTypes.person)">
+                        <h6 class="nav-link" data-toggle="pill">People-{{searchPeople.length}}</h6>
+                    </li>
+                    <li class="nav-item" >
+                        <h6 class="nav-link" data-toggle="pill">Companies-<span>0</span></h6>
+                    </li>
+                    <li class="nav-item" >
+                        <h6 class="nav-link" data-toggle="pill">Keywords-0</h6>
+                    </li>
+                    <li class="nav-item" >
+                        <h6 class="nav-link" data-toggle="pill">Collections-0</h6>
+                    </li>
+                    <li class="nav-item" >
+                        <h6 class="nav-link" data-toggle="pill">Networks-0</h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9 app-container-box" >
+            <h2 ng-show="currentData.length==0">No Data.</h2>
+            <div ng-repeat="item in currentData" style="cursor: pointer;">
+                <movie-tv-horizontal-card title="{{item.title}}" ng-click="onMovieCardClick(item.id)"
+                    releasedate="{{item.realseDateString}}" overview="{{item.overview}}"
+                    posterpath="{{item.posterPath}}" />
+            </div>
+        </div>
+    </div>
+</div>

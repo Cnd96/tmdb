@@ -1,0 +1,46 @@
+<div class="app-container margin-top-four"  >
+    <div class="row">
+        <div class="col-md-3 app-container-box"  >
+            <img class="bio-image app-border-radius" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{personDetails.posterPath}}">
+            <div class="md-only-large-view icons" >
+                <i class="fa fa-facebook-official" ></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+            </div>
+            
+            <div class="text-center md-only-small-view icons margin-top-four" >
+                <h1 class="zero-margin-bottom">{{personDetails.name}}</h1>
+                <i class="fa fa-facebook-official"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+            </div>
+           
+            <div  >
+                <h4>Personal Info</h4>
+                <h6 >Known For</h6>
+                <p>{{personDetails.knownForDepartment}}</p>
+                <h6>Birthdate</h6>
+                <p>{{personDetails.birthday}}</p>
+                <h6>Place of Birth</h6>
+                <p>{{personDetails.placeOfBirth}}</p>
+                <div class="md-only-large-view">
+                    <h6>Also Known As</h6>
+                    <p ng-repeat="known in personDetails.alsoKnownAs">{{known}}</p>
+                </div>
+            </div>      
+        </div>
+        <div class="col-md-9 app-container-box"  >
+            <h1 class="md-only-large-view"><strong>{{personDetails.name}}</strong></h1>
+            <h4 style="margin-top: 2vh;">Biography</h4>
+            <span class="person-bio-para">{{personDetails.biography| limitTo:strLimit }}</span>
+            <span ng-if="showMore" style="cursor: pointer;"ng-click="onShowMoreClick()">
+                ...
+                <span style="color: blue;" >Show more</span>
+            </span>
+            <div >
+                <person-credits-list></person-credits-list>
+            </div>
+            
+        </div>
+    </div>
+</div>

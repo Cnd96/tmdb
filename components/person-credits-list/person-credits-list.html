@@ -1,0 +1,18 @@
+
+    <div class="scrolling-wrapper-container">
+        <div class="scrolling-wrapper row flex-row flex-nowrap horizontal-card-wrapper ">
+            <div ng-repeat="item in knownForData">
+                <movie-tv-vertical-card title="{{item.title}}" ng-click="onItemClick(item.id,item.mediaType)" posterpath="{{item.posterPath}}" />
+            </div>
+        </div>
+    </div>
+    
+    <div ng-repeat="data in creditsData " class="margin-top-four" >
+        <h4 >{{data.department}}</h4>
+        
+        <div class="app-border-shadow app-border margin-top-four">
+            <div ng-repeat="line in data.dataLines"  style="padding:15px 15px 15px 15px;font-size: small;border-bottom: 1px solid rgba(227,227,227,1);">
+                {{line.year}} ◯ <b>{{line.title}}</b> {{line.creditString}}
+            </div>
+        </div>
+    </div>

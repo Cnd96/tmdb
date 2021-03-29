@@ -1,0 +1,415 @@
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.app-container{
+    width: 85%;
+    margin:  auto;
+    min-height: 800px;
+}
+
+@media screen and (max-width: 767px) {
+    .app-container{
+        width: 100%;
+        margin: auto;
+    }
+    .app-container-box{
+        width: 90% !important;
+        margin: auto;
+    }
+}
+
+/* Main page poster */
+.main-poster {
+    color: white;
+    height: 40vh;
+    background-image: linear-gradient(to right , rgba(40, 65, 100, 0.7) , rgba(40, 65, 100,0)) , url('./../assets/main2.jpg');  
+    background-size: cover;
+}
+@media screen and (max-width: 767px) {
+    .main-poster {
+        width: 100%;
+        height: 25vh;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .main-poster {
+        height: 30vh;
+    }
+}
+
+
+/* text */
+h1,h2,h3,h4,h5,h6,p {
+    font-family: 'Poppins', sans-serif; 
+}
+p {
+    font-size: 13px;
+}
+.icons{
+    font-size: 30px;
+}
+hr {
+    border:13px solid rgb(168, 167, 167);
+    margin: 6vh 0 4vh 0 !important;
+}
+.zero-margin-bottom{
+    margin-bottom: 0px;
+}
+/* Text Media queries */
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 25px !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+    }
+
+    h3 {
+        font-size: 19px !important;
+    }
+
+    h4 {
+        font-size: 17px !important;
+    }
+
+    h5 {
+        font-size: 15px !important;
+    }
+
+    h6 {
+        font-size: 14px !important;
+    }
+
+    p {
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    h1 {
+        font-size: 22px !important;
+    }
+
+    h2 {
+        font-size: 18px !important;
+    }
+
+    h3 {
+        font-size: 17px !important;
+    }
+
+    h4 {
+        font-size: 15px !important;
+    }
+    h5 {
+        font-size: 13px !important;
+    }
+
+    h6 {
+        font-size: 12px !important;
+    }
+    p {
+        font-size: 11px !important;
+    }
+
+}
+
+
+/* Wrapped container (Movie tv crew) */
+.wrapped-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.wrapped-flex-container>div {
+    /* Four elements in large view */
+    flex: 0 0 25%;
+}
+@media screen and (max-width: 767px) {
+    .wrapped-flex-container>div {
+        /* Only three person in tab view */
+        flex: 0 0 30%;
+    }
+}
+@media screen and (max-width: 426px) {
+    .wrapped-flex-container>div {
+        /* Only two person in mobile view */
+        flex: 0 0 40%;
+    }
+}
+
+/* Horizontal Card wrapper */
+.horizontal-card-wrapper div {
+    margin: 6px;
+}
+.horizontal-card-wrapper img {
+    width: 150px;
+}
+/* Media queries */
+@media screen and (max-width: 1024px) {
+    .horizontal-card-wrapper img {
+        width: 140px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .horizontal-card-wrapper img {
+        width: 130px;
+    }
+}
+
+
+
+/* Search page results */
+.search-results-box {
+    padding: 0px 0px 5px 0px;
+}
+.search-results-box .search-list-container {
+    display: flex;
+    flex-direction: column
+}
+.search-results-box div {
+    background-color: #01B4E4;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.search-results-box .nav-pills .nav-item {
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+.search-results-box .nav-pills .nav-item .nav-link:not(.active) {
+    background-color: white;
+    border-radius: 0px;
+    color: black;
+    font-weight: lighter;
+}
+.search-results-box .nav-pills .nav-item .nav-link {
+    height: 40px;
+    border-radius: 0px;
+    background-color: #EBEBEB;
+    color: black;
+    font-weight: 500;
+}
+@media screen and (max-width: 767px) {
+    .search-results-box {
+        width: 100%;
+        border-radius: 0px;
+        margin-bottom: 15px;
+    }
+    .search-results-box div {
+        border-top-left-radius: 0px !important;
+        border-top-right-radius: 0px !important;
+    }
+    .search-results-box .search-list-container {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .search-results-box .nav-pills .nav-item {
+        display: inline;
+        min-width: 130px;
+    }
+}
+
+/* Borders */
+.app-border-shadow {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.app-border{
+    border: 1px solid rgba(227,227,227,1);
+}
+.app-border-radius{
+    border-radius: 5px;
+}
+.app-left-border-radius{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+
+
+/* medium (767px) display on large and small views */
+.md-only-small-view{
+    display: none;
+}
+.md-only-large-view{
+    display: block;
+}
+@media screen and (max-width: 767px) {
+    .md-only-large-view{
+        display: none;
+    }
+    
+    .md-only-small-view{
+        display: block;
+    }
+}
+
+
+/* Horizontal and vertical center class */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Vertical enter */
+.vertical-center {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+/* elements horizontal center */
+.horizontal-center{
+    margin: auto;
+}
+/* text center */
+.text-center{
+    text-align: center;
+}
+/* image center in div*/
+.center-image-container{
+    position: relative;
+}
+.center-image-container img{
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+    position: absolute; 
+}
+
+
+.margin-bottom-zero{
+    margin-bottom: 0;
+}
+/* Margin top */
+.margin-top-four{
+    margin-top: 4vh;
+}
+/* Margin top small view*/
+@media screen and (max-width: 767px) {
+    .margin-top-three-small{
+        margin-top: 3vh;
+    }
+}
+
+
+.padding-left{
+    padding-left: 20px !important;
+}
+/* Pointer class */
+.pointer {cursor: pointer;}
+/* Display flex */
+.display-flex{
+    display: flex;
+}
+.same-line-text{
+    display: inline-block;
+}
+
+
+/* only four lines of text */
+.only-four-lines {
+    text-overflow: clip;
+    /* line-height: 1.5em;
+    height: 6em; */
+    width: 98%;
+    overflow: hidden;
+    /* https://caniuse.com/?search=line-clamp  line clamp support browsers */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.float-right{
+    float: right;
+}
+
+
+/* Scroller */
+.scrolling-wrapper-container{
+    padding: 0 15px 0 15px;
+}
+.scrolling-wrapper {
+    overflow-x: auto;
+}
+::-webkit-scrollbar {
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px grey;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #DCDCDC;
+    border-radius: 10px;
+}
+@media screen and (max-width: 767px) {
+    .scrolling-wrapper-container{
+        /* padding:0 10px 0 10px; */
+        padding: 0;
+    }
+}
+
+/* Colors */
+:root {
+    --mainLinearColor1: 10.98%, 15.29%, 29.02%;
+    --mainLinearColor2: 94.51%, 78.82%, 22.75%;
+    --mainLinearColor3: 10.59%, 10.98%, 9.80%;
+    --mainLinearColor4: 19.22%, 31.37%, 33.33%;
+    --mainLinearColor5: 8.24%, 5.88%, 8.63%;
+    --mainLinearColor6: 12.94%, 4.71%, 3.92%;
+    --mainLinearColor7: 81.18%, 12.94%, 15.69%;
+    --mainLinearColor8: 75.69%, 76.47%, 84.31%;
+}
+footer {
+    margin-top: 100px;
+    text-align: center;
+    padding: 30px;
+    background-color: #032541;
+    color: white;
+}
+
+.keyWordlabel{
+    display: inline-flex;
+    background-color: #E7EAED;
+    font-size: 13px; 
+    padding: 3px;
+    margin-right: 7px;
+}
+
+/* Keyword Page */
+.block{
+    width:100%;
+    height: 75px;
+    background-color: #072e44;
+    color: white;
+}
+
+.block div{
+    width:85%;
+    height: 100%;
+    
+}
+.keyword-pagination-container{
+    font-size: 15px;
+    float: right;
+}
+.keyword-page {
+    display: inline-block;
+    width: 25px;
+    height: 30px;
+    border: none;
+}
+
+.keyword-page-active {
+    width: 30px;
+    border: 2px solid rgb(128, 125, 125);
+}
+
+

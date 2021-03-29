@@ -1,0 +1,27 @@
+.bio-image{
+    width: 95%;
+}
+
+.person-bio-para{
+    white-space: pre-line;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+    .person-bio-para{
+        white-space: pre-line;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .bio-image{
+        width: 150px;
+        height: 180px;
+        object-fit:  cover;
+        object-position: center top;
+        margin: auto;
+        display: block;
+    }
+
+    
+}

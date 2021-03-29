@@ -1,0 +1,79 @@
+.colors-class-1{
+    background-color: #1c274a;
+    color: #FFFFFF;
+}
+.colors-class-2{
+    background-color: #f1c93a;
+    color: #000000;
+}
+.colors-class-3{
+    background-color: #1b1c19;
+    color: #FFFFFF;
+}
+
+.colors-class-4{
+    background-color: #315055;
+    color: #FFFFFF;
+}
+
+.colors-class-5{
+    background-color: #150f16;
+    color: #FFFFFF;
+}
+
+.colors-class-6{
+    background-color: #210c0a;
+    color: #FFFFFF;
+}
+
+.colors-class-7{
+    background-color: #cf2128;
+    color: #000000;
+}
+
+.colors-class-8{
+    background-color: #c1c3d7;
+    color: #000000;
+}
+
+.movie-tv-overview-section-left {
+    min-height: 60vh;
+}
+
+
+.movie-tv-overview-section-right {
+    background-size: cover;
+}
+
+.movie-tv-overview-section-left img{ 
+    max-height: 80%;
+    max-width: 90%;
+    z-index: 1;
+}
+@media screen and (max-width:1024px) {
+    .movie-tv-overview-section-left {
+        min-height: 60vh;
+    }
+}
+.movie-tv-other-section-row{
+    padding: 2vw;
+}
+@media screen and (max-width: 767px) {
+    .movie-tv-overview-section-left{
+        min-height: 35vh;
+    }
+    .movie-tv-overview-section-left img{
+        left: 30px; 
+        height: 75%;
+        max-width: none;
+    }
+    .movie-tv-other-section-row{
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .movie-tv-overview-section-left{
+        min-height: 25vh;
+    }
+}

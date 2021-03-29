@@ -1,0 +1,20 @@
+<div class="app-container">
+    <div class="main-poster">
+        <div class="vertical-center padding-left">
+            <h1><strong>Welcome.</strong> </h1>
+            <h4><strong></strong>Millions of movies, TV shows and people to discover. Explore now.</strong> </h4>
+            <input type="text" ng-model="searchResult" class="search-input"
+                placeholder="Search for a movie, tv show, person......">
+            <input type="submit" ng-click="searchClicked()" class="search-button " value="Search">
+        </div>
+    </div>
+    
+    <div class="app-container-box">
+        <div class="margin-top-four">
+            <trending-movies></trending-movies>
+        </div>
+        <div class=" margin-top-four">
+            <popular-movies></popular-movies>
+        </div>
+    </div>
+</div>
