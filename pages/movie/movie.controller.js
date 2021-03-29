@@ -29,7 +29,7 @@ angular.module('movieApp').controller('MovieController',["$scope","$route","appD
 
     function calculateInnerWidth(){
         if($window.innerWidth<767){
-            angular.element('#movie-bg-poster-id').css('background-image', `linear-gradient(to right, rgba(var(--${$scope.linearColor}), 1) , rgba(var(--${$scope.linearColor}), 0.17)),url('http://image.tmdb.org/t/p/w780${$scope.movieData.backdropPath}')`);
+            angular.element('#movie-bg-poster-id').css('background-image', `linear-gradient(to right, rgba(var(--${$scope.linearColor}), 0.9) , rgba(var(--${$scope.linearColor}), 0.17)),url('http://image.tmdb.org/t/p/w780${$scope.movieData.backdropPath}')`);
             
            }else{
             angular.element('#movie-bg-poster-id').css('background-image', `linear-gradient(to right, rgba(var(--${$scope.linearColor}), 1), rgba(var(--${$scope.linearColor}), 0.75)),url('http://image.tmdb.org/t/p/w780${$scope.movieData.backdropPath}')`);
