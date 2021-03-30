@@ -33,10 +33,10 @@ angular.module('movieApp').directive('paginationSection', function () {
                     else {
                         const FUPMARGIN = Math.min(CURRENTPAGE+ NOOFPAGESWITHACTIVE, TOTALPAGES)
                         first = Array(FUPMARGIN).fill().map((_, i) => i + 1)
-                        last = Array(3).fill().map((_, i) => TOTALPAGES- NOOFPAGESIONEPART + i + 1)
+                        last = Array(NOOFPAGESIONEPART).fill().map((_, i) => TOTALPAGES- NOOFPAGESIONEPART + i + 1)
                     }
                 } else {
-                    first = Array(3).fill().map((_, i) => i + 1)
+                    first = Array(NOOFPAGESIONEPART).fill().map((_, i) => i + 1)
                     if ((CURRENTPAGE + NOOFPAGESWITHACTIVE) >= (TOTALPAGES - NOOFPAGESWITHACTIVE - 1)) {
                         middle = [];
                         const MARGIN = TOTALPAGES - (CURRENTPAGE- NOOFPAGESWITHACTIVE) + 1
