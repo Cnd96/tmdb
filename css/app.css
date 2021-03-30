@@ -301,7 +301,7 @@ hr {
 
 
 .padding-left{
-    padding-left: 20px !important;
+    padding-left: 20px ;
 }
 /* Pointer class */
 .pointer {cursor: pointer;}

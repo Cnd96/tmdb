@@ -2,15 +2,14 @@
 
 angular.module('movieApp').controller('TvController',["$scope","$route","appDataService","$window" , function ($scope, $route,appDataService,$window) {
     $window.scrollTo(0, 0);
+    const TVSHOWID = $route.current.params.tvShowId
     const randomNumber = Math.floor(Math.random() * 8) + 1
     $scope.linearColor =   `mainLinearColor${randomNumber}`
     $scope.colorClass = `colors-class-${randomNumber}`
-    
-    $scope.tvShowId = $route.current.params.tvShowId
     $scope.tvShowData = []
     $scope.seasons=[]
 
-    appDataService.getSingleTVShowDetails($scope.tvShowId).then(function (data) {
+    appDataService.getSingleTVShowDetails(TVSHOWID).then(function (data) {
         
         data.seasons.sort((b,a) => (a.seasonNo > b.seasonNo) ? 1 : ((b.seasonNo > a.seasonNo) ? -1 : 0))  
         data.seasons.forEach(s=>{

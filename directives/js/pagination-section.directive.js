@@ -9,9 +9,12 @@ angular.module('movieApp').directive('paginationSection', function () {
             onpageclick:'&',
         },
         controller: function ($scope) {
+            const NOOFPAGESIONEPART=3;
+            const NOOFPAGESWITHACTIVE=2
             $scope.firstPart ;
             $scope.middlePart;
             $scope.lastPart;
+
 
             $scope.createPagination = function () {
                 let first = [];
@@ -19,29 +22,29 @@ angular.module('movieApp').directive('paginationSection', function () {
                 let last = [];
                 $scope.currentpage=parseInt($scope.currentpage)
                 $scope.totalpages=parseInt($scope.totalpages)
-                const currentPage=$scope.currentpage
-                const totalPages=$scope.totalpages
-                if (currentPage < 7) {
+                const CURRENTPAGE=$scope.currentpage
+                const TOTALPAGES=$scope.totalpages
+                if (CURRENTPAGE < (NOOFPAGESIONEPART+NOOFPAGESWITHACTIVE*2)) {
                     middle = [];
-                    if ((currentPage + 2) >= (totalPages - 2 - 1)) {
-                        first = Array(totalPages).fill().map((_, i) => i + 1);
+                    if ((CURRENTPAGE + NOOFPAGESWITHACTIVE) >= (TOTALPAGES -NOOFPAGESWITHACTIVE  - 1)) {
+                        first = Array(TOTALPAGES).fill().map((_, i) => i + 1);
                         last = [];
                     }
                     else {
-                        const fupMargin = Math.min(currentPage+ 2, totalPages)
-                        first = Array(fupMargin).fill().map((_, i) => i + 1)
-                        last = Array(3).fill().map((_, i) => totalPages- 3 + i + 1)
+                        const FUPMARGIN = Math.min(CURRENTPAGE+ NOOFPAGESWITHACTIVE, TOTALPAGES)
+                        first = Array(FUPMARGIN).fill().map((_, i) => i + 1)
+                        last = Array(3).fill().map((_, i) => TOTALPAGES- NOOFPAGESIONEPART + i + 1)
                     }
                 } else {
                     first = Array(3).fill().map((_, i) => i + 1)
-                    if ((currentPage + 2) >= (totalPages - 2 - 1)) {
+                    if ((CURRENTPAGE + NOOFPAGESWITHACTIVE) >= (TOTALPAGES - NOOFPAGESWITHACTIVE - 1)) {
                         middle = [];
-                        const mar = totalPages - (currentPage- 2) + 1
-                        last = Array(mar).fill().map((_, i) => totalPages - mar + i + 1)
+                        const MARGIN = TOTALPAGES - (CURRENTPAGE- NOOFPAGESWITHACTIVE) + 1
+                        last = Array(MARGIN).fill().map((_, i) => TOTALPAGES - MARGIN + i + 1)
                     }
                     else {
-                        last = Array(3).fill().map((_, i) => totalPages- 3 + i + 1)
-                        middle = Array(3 + 2).fill().map((_, i) => currentPage - 3 + i + 1)
+                        last = Array(NOOFPAGESIONEPART).fill().map((_, i) => TOTALPAGES- 3 + i + 1)
+                        middle = Array(NOOFPAGESIONEPART + 2).fill().map((_, i) => CURRENTPAGE - NOOFPAGESIONEPART + i + 1)
                     }
                 }
                 $scope.firstPart=first;

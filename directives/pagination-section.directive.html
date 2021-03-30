@@ -1,11 +1,14 @@
 <div class="keyword-pagination-container">
     <label class="pointer" ng-if="currentpage!=1" ng-click="onclick(currentpage-1)" >← Previous</label>
+ 
+ 
     <span ng-repeat="fi in firstPart" ng-click="onclick(fi)" class="keyword-page"
         ng-class="{true: 'keyword-page-active ', false: ''}[currentpage == fi]">
         <div class="text-center ">
             <label >{{fi}}</label>
         </div>
     </span>
+
     <span ng-if="middlePart.length>0">...</span>
     <span ng-repeat="mi in middlePart" ng-click="onclick(mi)" class="keyword-page"
         ng-class="{true: 'keyword-page-active ', false: ''}[currentpage == mi]">
@@ -13,8 +16,13 @@
             <label >{{mi}}</label>
         </div>
     </span>
+
+
+
     <span ng-if="middlePart.length==0&&lastPart.length>0">...</span>
     <span ng-if="middlePart.length>0">...</span>
+
+    
     <span ng-repeat="li in lastPart" ng-click="onclick(li)" class="keyword-page"
         ng-class="{true: 'keyword-page-active ', false: ''}[currentpage == li]">
         <div class="text-center ">

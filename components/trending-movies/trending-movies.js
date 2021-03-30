@@ -1,41 +1,44 @@
-const today = "Today"
-const thisWeek = "Week"
+const TODAY = "Today"
+const THISWEEK = "Week"
 
 angular.module('movieApp').component('trendingMovies', {
-
     templateUrl: 'components/trending-movies/trending-movies.html',
     controller: function ($scope, appDataService,$location) {
-        $scope.title = 'Trending Movies'
+        const getTrendingMoviesThisWeek=function(){
+            appDataService.getTrendingMoviesThisWeek().then(function (data) {
+                $scope.trendingData = data
+                $scope.$apply()
+            }, function (error) {
+                console.log(error)
+            });
+        }
 
-        $scope.trendingText1 = today
-        $scope.trendingText2 = thisWeek
-        $scope.trendingCurrentItem = today
+        const getTrendingMoviesToday=function(){
+            appDataService.getTrendingMoviesToday().then(function (data) {
+                $scope.trendingData = data
+                $scope.$apply()
+            }, function (error) {
+                console.log(error)
+            });
+        }
+
+        $scope.trendingText1 = TODAY
+        $scope.trendingText2 = THISWEEK
+        $scope.trendingCurrentItem = TODAY
         $scope.trendingMovies = [];
         $scope.trendingTvShows = [];
         $scope.trendingData = [];
-        appDataService.getTrendingMoviesThisWeek().then(function (data) {
-            $scope.trendingMoviesThisWeek = data
-            $scope.$apply()
-        }, function (error) {
-            console.log(error)
-        });
-
-        appDataService.getTrendingMoviesToday().then(function (data) {
-            $scope.trendingMoviesToday = data
-            $scope.trendingData = $scope.trendingMoviesToday
-            $scope.$apply()
-        }, function (error) {
-            console.log(error)
-        });
+       
+        getTrendingMoviesToday();
 
         $scope.onToggleTrendingChange = function (clickValue) {
-            if (clickValue === today) {
-                $scope.trendingData = $scope.trendingMoviesToday
-                $scope.trendingCurrentItem = today
+            if (clickValue === TODAY) {
+                getTrendingMoviesToday();
+                $scope.trendingCurrentItem = TODAY;
             }
             else {
-                $scope.trendingData = $scope.trendingMoviesThisWeek
-                $scope.trendingCurrentItem = thisWeek
+                getTrendingMoviesThisWeek();
+                $scope.trendingCurrentItem = THISWEEK;
             }
         }
 

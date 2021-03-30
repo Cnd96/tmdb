@@ -3,14 +3,15 @@
 
 angular.module('movieApp').controller('MovieController',["$scope","$route","appDataService","$window" , function ($scope, $route,appDataService,$window) {
     $window.scrollTo(0, 0);
+    const MOVIEID = $route.current.params.movieId
     const randomNumber = Math.floor(Math.random() * 8) + 1
     $scope.linearColor =   `mainLinearColor${randomNumber}`
     $scope.colorClass = `colors-class-${randomNumber}`
     $scope.movieData;
     $scope.crew = [];
-    $scope.movieId = $route.current.params.movieId
+    
 
-    appDataService.getSingleMovieDetails($scope.movieId).then(function (data) {
+    appDataService.getSingleMovieDetails(MOVIEID).then(function (data) {
        $scope.movieData=data;
        
        calculateInnerWidth();
@@ -20,7 +21,7 @@ angular.module('movieApp').controller('MovieController',["$scope","$route","appD
     
     
     
-    appDataService.getMovieCredits($scope.movieId).then(function (data) {
+    appDataService.getMovieCredits(MOVIEID).then(function (data) {
         $scope.crew = data.crew.filter(r => r.department == "Directing" || r.department == "Production")
     }, function (error) {
         console.log(error)

@@ -4,35 +4,38 @@ const tvShowText = "TV Shows"
 angular.module('movieApp').component('popularMovies', {
     templateUrl: 'components/popular/popular.html',
     controller: function ($scope, appDataService, $location) {
+        const getPopularTvShows=function(){
+            appDataService.getPopularTvShows().then(function (data) {
+                
+                $scope.popularData = data
+                $scope.$apply()
+            }, function (error) {
+                console.log(error)
+            });
+        }
+
+        const getPopularMovies=function(){
+            appDataService.getPopularMovies().then(function (data) {
+                $scope.popularData = data
+                $scope.$apply()
+            }, function (error) {
+                console.log(error)
+            });
+        }
+
         $scope.popularText1 = tvShowText
         $scope.popularText2 = movieText
         $scope.popularCurrentItem = tvShowText
-        $scope.popularMovies = [];
-        $scope.popularTvShows = [];
         $scope.popularData = [];
-
-        appDataService.getPopularMovies().then(function (data) {
-            $scope.popularMovies = data  
-            $scope.$apply()
-        }, function (error) {
-            console.log(error)
-        });
-
-        appDataService.getPopularTvShows().then(function (data) {
-            $scope.popularTvShows = data
-            $scope.popularData = $scope.popularTvShows
-            $scope.$apply()
-        }, function (error) {
-            console.log(error)
-        });
-
+        getPopularTvShows()
+        
         $scope.onToggleChange = function (clickValue) {
             if (clickValue === movieText) {
-                $scope.popularData = $scope.popularMovies
+                getPopularMovies()
                 $scope.popularCurrentItem = movieText
             }
             else {
-                $scope.popularData = $scope.popularTvShows
+                getPopularTvShows()
                 $scope.popularCurrentItem = tvShowText
             }
         }

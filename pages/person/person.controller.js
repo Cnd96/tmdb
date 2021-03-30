@@ -2,13 +2,13 @@
 
 angular.module('movieApp').controller('PersonController',[ "$scope","$route","appDataService","$window" , function ($scope, $route, appDataService, $window) {
     $window.scrollTo(0, 0);
-    $scope.personId = $route.current.params.personId
+    const PERSONID = $route.current.params.personId
     $scope.personDetails;
     $scope.strLimit = 850;
     $scope.showMore = false
 
 
-    appDataService.getPersonDetails($scope.personId).then(function (data) {
+    appDataService.getPersonDetails(PERSONID).then(function (data) {
         $scope.personDetails = data;
         
         if ($scope.personDetails.biography.length > $scope.strLimit) {

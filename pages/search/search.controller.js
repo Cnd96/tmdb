@@ -4,12 +4,11 @@
 
 angular.module('movieApp').controller('SearchController',["$scope","$route","$location","appDataService","$window" ,  function ($scope, $route, $location, appDataService,$window) {
 	$window.scrollTo(0, 0);
-	const query = $route.current.params.query;
-	$scope.searchResults = []
+	const QUERY = $route.current.params.query;
+	// $scope.searchResults = []
 	$scope.searchMovies = []
 	$scope.searchTvShows = []
 	$scope.searchPeople = []
-	$scope.numberOfPages = 0
 	$scope.currentData = []
 
 	$scope.mediaTypes = {
@@ -19,7 +18,7 @@ angular.module('movieApp').controller('SearchController',["$scope","$route","$lo
 	}
 	$scope.currentActive = $scope.mediaTypes.movie
 
-	appDataService.getMultiSearchResult(query).then(function (data) {
+	appDataService.getMultiSearchResult(QUERY).then(function (data) {
 		$scope.searchMovies = data.movies
 		$scope.searchTvShows = data.tvShows
 		$scope.searchPeople =data.people
