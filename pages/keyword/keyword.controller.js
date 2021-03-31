@@ -15,7 +15,7 @@ angular.module('movieApp').controller('KeywordController',["$scope","$route","$l
             $scope.results = data.results
             $scope.totalPages=data.totalPages
         }, function (error) {
-            console.log(error)
+            console.error(error)
         });
     }
     getData($scope.keywordId,1)

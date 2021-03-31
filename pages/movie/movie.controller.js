@@ -13,10 +13,9 @@ angular.module('movieApp').controller('MovieController',["$scope","$route","appD
 
     appDataService.getSingleMovieDetails(MOVIEID).then(function (data) {
        $scope.movieData=data;
-       
        calculateInnerWidth();
     }, function (error) {
-        console.log(error)
+        console.error(error)
     });
     
     
@@ -24,7 +23,7 @@ angular.module('movieApp').controller('MovieController',["$scope","$route","appD
     appDataService.getMovieCredits(MOVIEID).then(function (data) {
         $scope.crew = data.crew.filter(r => r.department == "Directing" || r.department == "Production")
     }, function (error) {
-        console.log(error)
+        console.error(error)
     });
     
 

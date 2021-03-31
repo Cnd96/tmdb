@@ -22,7 +22,7 @@ angular.module('movieApp').component('personCreditsList', {
             })
             $scope.knownForData=uniqueMovies.slice(0,NUMBEROFKNOWITEMS);
         }, function (error) {
-            console.log(error)
+            console.error(error)
         });
 
         $scope.onItemClick = function (id,mediaType) {

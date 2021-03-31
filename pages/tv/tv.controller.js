@@ -21,7 +21,7 @@ angular.module('movieApp').controller('TvController',["$scope","$route","appData
         $scope.seasons=data.seasons
         calculateInnerWidth();
      }, function (error) {
-         console.log(error)
+         console.error(error)
      });
 
 

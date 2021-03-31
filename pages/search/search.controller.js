@@ -27,7 +27,7 @@ angular.module('movieApp').controller('SearchController',["$scope","$route","$lo
 		$scope.searchMovies.forEach(m => m.realseDateString = appDataService.getDateMonthString(m.realeseDate));
 		$scope.currentData = $scope.searchMovies
 	}, function (error) {
-		console.log(error)
+		console.error(error)
 	});
 
 	$scope.onItemClick = function (type) {

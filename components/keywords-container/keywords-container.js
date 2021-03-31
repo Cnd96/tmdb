@@ -8,13 +8,13 @@ angular.module('movieApp').component('keywordsContainer', {
                 appDataService.getMovieKeywords($route.current.params.movieId).then(function (data) {
                     $scope.keywords=data
                 }, function (error) {
-                    console.log(error)
+                    console.error(error)
                 });
             } else if (this.type === "tv") {
                 appDataService.getTvShowKeywords($route.current.params.tvShowId).then(function (data) {
                     $scope.keywords=data
                 }, function (error) {
-                    console.log(error)
+                    console.error(error)
                 });
             }
         }

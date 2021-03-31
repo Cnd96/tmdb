@@ -9,7 +9,7 @@ angular.module('movieApp').component('trendingMovies', {
                 $scope.trendingData = data
                 $scope.$apply()
             }, function (error) {
-                console.log(error)
+                console.error(error)
             });
         }
 
@@ -18,7 +18,7 @@ angular.module('movieApp').component('trendingMovies', {
                 $scope.trendingData = data
                 $scope.$apply()
             }, function (error) {
-                console.log(error)
+                console.error(error)
             });
         }
 

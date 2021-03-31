@@ -15,7 +15,7 @@ angular.module('movieApp').controller('PersonController',[ "$scope","$route","ap
             $scope.showMore = true
         }
     }, function (error) {
-        console.log(error)
+        console.error(error)
     });
 
 

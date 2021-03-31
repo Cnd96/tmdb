@@ -33,7 +33,7 @@
     <div ng-controller="AppController">
         <div class="bs-example">
             <nav class=" navbar navbar-expand-lg navbar-dark" style="background-color: #032541;padding-left:50px;">
-                <a class="navbar-brand" href="{{appUrl}}/main">
+                <a class="navbar-brand" ng-click="onMainClick()">
                     <img src="assets/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
                         height="20 vh" alt="" loading="lazy" />
                 </a>
@@ -45,7 +45,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ">
-                            <a href="{{appUrl}}/main" class="nav-item nav-link active">Movies</a>
+                            <a ng-click="onMainClick()" class="nav-item nav-link active">Movies</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-item nav-link active">TV Shows</a>
