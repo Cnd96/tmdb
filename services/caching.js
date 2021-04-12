@@ -1,14 +1,14 @@
 angular.module('movieApp').factory('dynamicCachingService', function (movieDbServices) {
-    let cacheDynamicData=function(url){
+    let cacheDynamicDataWithImages=function(url,images){
         if('caches'in window){
             caches.open('dynamic')
             .then(cache => {
-              cache.add(url);
+              cache.addAll([url,...images]);
             })
         }
     }
     return {
-        cacheDynamicData
+        cacheDynamicDataWithImages
     };
 
 

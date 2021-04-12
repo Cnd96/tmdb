@@ -9,7 +9,6 @@ angular.module('movieApp').controller('MainController',["$scope","$location","$w
             $location.url(`/search?query=${$scope.searchResult}`);
         }
     }
-
     
 }]);
 

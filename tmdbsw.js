@@ -1,8 +1,9 @@
-const STATICCACHENAME = 'static-v1.19';
+const STATICCACHENAME = 'static-v1.30';
 const DYNAMIC='dynamic';
 
 const STATICCACHEASSETS = [
   '/',
+  './#!/main',
   './index.html#!/main',
   './pages/main/main-page.html',
   './components/popular/popular.html',
@@ -50,29 +51,32 @@ self.addEventListener('activate', function(event) {
 
   // Call Fetch Event
 self.addEventListener('fetch', e => {
-    if(e.request.destination==="image"){
+  // self.clients.matchAll().then(function(w){
+  //   console.log(w[0].url===self.registration.scope+'#!/main');
+  // })
+    // if(e.request.destination==="image"){
+    //   e.respondWith(
+    //     fetch(e.request)
+    //     .then(function(res){
+    //       return caches.open(DYNAMIC)
+    //       .then(function(cache){
+    //         cache.put(e.request.url,res.clone());
+    //         return res;
+    //       })
+    //     })
+    //     .catch(function(err){
+    //       return caches.match(e.request)
+    //     })
+    //   );
+    // }
+    // else{
       e.respondWith(
         fetch(e.request)
-        .then(function(res){
-          return caches.open(DYNAMIC)
-          .then(function(cache){
-            cache.put(e.request.url,res.clone());
-            return res;
-          })
-        })
         .catch(function(err){
           return caches.match(e.request)
         })
       );
-    }
-    else{
-      e.respondWith(
-        fetch(e.request)
-        .catch(function(err){
-          return caches.match(e.request)
-        })
-      );
-    }
+    // }
     
   });
   

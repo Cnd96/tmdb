@@ -434,7 +434,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             else {
                     movieDbServices.getPopularMovies().then(function (data) {
                     popularMovies = data.data.results.map(movie => new MovieTvOverview(movie))
-                    dynamicCachingService.cacheDynamicData(data.url)
+                    
+                    dynamicCachingService.cacheDynamicDataWithImages(data.url,popularMovies.map(M=>'http://image.tmdb.org/t/p/w300'+M.posterPath))
                     resolve(popularMovies)
                 }, function (error) {
                     reject(error);
@@ -452,7 +453,7 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             else {
                     movieDbServices.getTrendingMoviesToday().then(function (data) {
                     trendingMovieToday = data.data.results.map(movie => new MovieTvOverview(movie))
-                    dynamicCachingService.cacheDynamicData(data.url)
+                    dynamicCachingService.cacheDynamicDataWithImages(data.url,trendingMovieToday.map(M=>'http://image.tmdb.org/t/p/w300'+M.posterPath))
                     resolve(trendingMovieToday)
                 }, function (error) {
                     reject(error);
@@ -470,7 +471,7 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             else {
                     movieDbServices.getTrendingMoviesThisWeek().then(function (data) {
                     trendingMoviesThisWeek = data.data.results.map(movie => new MovieTvOverview(movie))
-                    dynamicCachingService.cacheDynamicData(data.url)
+                    dynamicCachingService.cacheDynamicDataWithImages(data.url,trendingMoviesThisWeek.map(M=>'http://image.tmdb.org/t/p/w300'+M.posterPath))
                     resolve(trendingMoviesThisWeek)
                 }, function (error) {
                     reject(error);
@@ -488,7 +489,7 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             else {
                 movieDbServices.getPopularTvShows().then(function (data) {
                     popularTvShows = data.data.results.map(tv => new MovieTvOverview(tv))
-                    dynamicCachingService.cacheDynamicData(data.url)
+                    dynamicCachingService.cacheDynamicDataWithImages(data.url,popularTvShows.map(T=>'http://image.tmdb.org/t/p/w300'+T.posterPath))
                     resolve(popularTvShows)
                 }, function (error) {
                     reject(error);
@@ -627,16 +628,16 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
 });
 
 angular.module('movieApp').factory('dynamicCachingService', function (movieDbServices) {
-    let cacheDynamicData=function(url){
+    let cacheDynamicDataWithImages=function(url,images){
         if('caches'in window){
             caches.open('dynamic')
             .then(cache => {
-              cache.add(url);
+              cache.addAll([url,...images]);
             })
         }
     }
     return {
-        cacheDynamicData
+        cacheDynamicDataWithImages
     };
 
 
@@ -1941,7 +1942,6 @@ angular.module('movieApp').controller('MainController',["$scope","$location","$w
             $location.url(`/search?query=${$scope.searchResult}`);
         }
     }
-
     
 }]);
 
