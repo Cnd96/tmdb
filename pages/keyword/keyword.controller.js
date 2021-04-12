@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('movieApp').controller('KeywordController',["$scope","$route","$location","appDataService","$window" , function ($scope, $route,$location, appDataService, $window) {
     $window.scrollTo(0, 0);
     $scope.keywordId = $route.current.params.keywordId
@@ -26,7 +24,8 @@ angular.module('movieApp').controller('KeywordController',["$scope","$route","$l
     }
 
     $scope.onMovieCardClick = function (id) {
-		$location.replace()
-		$location.url(`/movie/${id}`);
+		// $location.replace()
+		// $location.url(`/movie/${id}`);
+        $location.path(`/movie/${id}`)
 	}
 }]);

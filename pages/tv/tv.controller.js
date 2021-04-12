@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('movieApp').controller('TvController',["$scope","$route","appDataService","$window" , function ($scope, $route,appDataService,$window) {
     $window.scrollTo(0, 0);
     const TVSHOWID = $route.current.params.tvShowId
@@ -10,7 +8,6 @@ angular.module('movieApp').controller('TvController',["$scope","$route","appData
     $scope.seasons=[]
 
     appDataService.getSingleTVShowDetails(TVSHOWID).then(function (data) {
-        
         data.seasons.sort((b,a) => (a.seasonNo > b.seasonNo) ? 1 : ((b.seasonNo > a.seasonNo) ? -1 : 0))  
         data.seasons.forEach(s=>{
             if(s.overview==undefined||s.overview==""){

@@ -1,0 +1,31 @@
+{
+  "name": "tmdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.controller.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cnd96/Cnd96.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cnd96/Cnd96.github.io/issues"
+  },
+  "homepage": "https://github.com/Cnd96/Cnd96.github.io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^3.1.0"
+  }
+}

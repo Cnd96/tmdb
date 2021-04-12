@@ -41,12 +41,11 @@ angular.module('movieApp').component('popularMovies', {
         }
 
         $scope.onItemClick = function (id) {
-            $location.replace()
             if ($scope.popularCurrentItem === movieText) {
-                $location.url(`/movie/${id}`);
+                $location.path(`/movie/${id}`)
             }
             else {
-                $location.url(`/tv/${id}`);
+                $location.path(`/tv/${id}`)
             }
         }
 

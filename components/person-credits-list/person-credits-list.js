@@ -26,8 +26,9 @@ angular.module('movieApp').component('personCreditsList', {
         });
 
         $scope.onItemClick = function (id,mediaType) {
-            $location.replace()
-            $location.url(`/${mediaType}/${id}`);
+            // $location.replace()
+            // $location.url(`/${mediaType}/${id}`);
+            $location.path(`/${mediaType}/${id}`)
         }
     }
 });

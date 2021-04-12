@@ -1,7 +1,3 @@
-'use strict';
-
-
-
 angular.module('movieApp').controller('SearchController',["$scope","$route","$location","appDataService","$window" ,  function ($scope, $route, $location, appDataService,$window) {
 	$window.scrollTo(0, 0);
 	const QUERY = $route.current.params.query;
@@ -46,7 +42,8 @@ angular.module('movieApp').controller('SearchController',["$scope","$route","$lo
 	}
 
 	$scope.onMovieCardClick = function (id) {
-		$location.replace()
-		$location.url(`/${$scope.currentActive}/${id}`);
+		// $location.replace()
+		// $location.url(`/${$scope.currentActive}/${id}`);
+		$location.path(`/${$scope.currentActive}/${id}`)
 	}
 }]);

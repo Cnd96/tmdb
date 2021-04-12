@@ -1,6 +1,3 @@
-'use strict';
-
-
 angular.module('movieApp').controller('MovieController',["$scope","$route","appDataService","$window" , function ($scope, $route,appDataService,$window) {
     $window.scrollTo(0, 0);
     const MOVIEID = $route.current.params.movieId

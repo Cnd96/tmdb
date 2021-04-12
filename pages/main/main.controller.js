@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('movieApp').controller('MainController',["$scope","$location","$window" ,function ($scope, $location, $window) {
     $window.scrollTo(0, 0);
     $scope.searchResult = "";
@@ -11,6 +9,8 @@ angular.module('movieApp').controller('MainController',["$scope","$location","$w
             $location.url(`/search?query=${$scope.searchResult}`);
         }
     }
+
+    
 }]);
 
 
