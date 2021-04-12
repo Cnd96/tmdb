@@ -1,4 +1,4 @@
-const STATICCACHENAME = 'static-v2.01';
+const STATICCACHENAME = 'static-v2.03';
 const DYNAMIC='dynamic';
 
 const STATICCACHEASSETS = [
@@ -25,7 +25,6 @@ self.addEventListener('install', e => {
     e.waitUntil(
       caches.open(STATICCACHENAME)
         .then(cache => {
-          console.log('Service Worker: Caching Files');
           cache.addAll(STATICCACHEASSETS);
         })
         .then(() => self.skipWaiting())
@@ -34,7 +33,6 @@ self.addEventListener('install', e => {
 
   
 self.addEventListener('activate', function(event) {
-  console.log('activate')
   event.waitUntil(
     caches.keys()
     .then(function(keyList){

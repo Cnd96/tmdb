@@ -629,6 +629,7 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
 
 angular.module('movieApp').factory('dynamicCachingService', function (movieDbServices) {
     let cacheDynamicDataWithImages=function(url,images){
+        console.log("dynamic caching...")
         if('caches'in window){
             caches.open('dynamic')
             .then(cache => {
@@ -1931,6 +1932,22 @@ angular.module('movieApp').controller('KeywordController',["$scope","$route","$l
         $location.path(`/movie/${id}`)
 	}
 }]);
+angular.module('movieApp').controller('MainController',["$scope","$location","$window" ,function ($scope, $location, $window) {
+    $window.scrollTo(0, 0);
+    $scope.searchResult = "";
+    $scope.searchClicked = function () {
+        if ($scope.searchResult.length == 0) {
+            alert("Empty search")
+        } else {
+            $location.replace()
+            $location.url(`/search?query=${$scope.searchResult}`);
+        }
+    }
+    
+}]);
+
+
+
 angular.module('movieApp').controller('MovieController',["$scope","$route","appDataService","$window" , function ($scope, $route,appDataService,$window) {
     $window.scrollTo(0, 0);
     const MOVIEID = $route.current.params.movieId
@@ -1974,22 +1991,6 @@ angular.module('movieApp').controller('MovieController',["$scope","$route","appD
   
 
 }]);
-angular.module('movieApp').controller('MainController',["$scope","$location","$window" ,function ($scope, $location, $window) {
-    $window.scrollTo(0, 0);
-    $scope.searchResult = "";
-    $scope.searchClicked = function () {
-        if ($scope.searchResult.length == 0) {
-            alert("Empty search")
-        } else {
-            $location.replace()
-            $location.url(`/search?query=${$scope.searchResult}`);
-        }
-    }
-    
-}]);
-
-
-
 angular.module('movieApp').controller('PersonController',[ "$scope","$route","appDataService","$window" , function ($scope, $route, appDataService, $window) {
     $window.scrollTo(0, 0);
     const PERSONID = $route.current.params.personId
@@ -2128,34 +2129,6 @@ angular.module('movieApp').component('cast', {
     bindings: { type: '@' },
 });
 
-angular.module('movieApp').component('keywordsContainer', {
-    templateUrl: 'components/keywords-container/keywords-container.html',
-    controller: function ($scope, appDataService, $route,$location) {
-        $scope.keywords = [];
-
-        this.$onInit = function () {
-            if (this.type === "movie") {
-                appDataService.getMovieKeywords($route.current.params.movieId).then(function (data) {
-                    $scope.keywords=data
-                }, function (error) {
-                    console.error(error)
-                });
-            } else if (this.type === "tv") {
-                appDataService.getTvShowKeywords($route.current.params.tvShowId).then(function (data) {
-                    $scope.keywords=data
-                }, function (error) {
-                    console.error(error)
-                });
-            }
-        }
-
-        $scope.onKeywordClick=function(keyword){
-            $location.path(`/keyword/${keyword.id}/${keyword.name}` );
-        }
-    },
-    bindings: { type: '@' },
-});
-
 angular.module('movieApp').component('personCreditsList', {
     templateUrl: 'components/person-credits-list/person-credits-list.html',
     controller: function ($scope, appDataService, $route,$location) {
@@ -2187,6 +2160,34 @@ angular.module('movieApp').component('personCreditsList', {
             $location.path(`/${mediaType}/${id}`)
         }
     }
+});
+
+angular.module('movieApp').component('keywordsContainer', {
+    templateUrl: 'components/keywords-container/keywords-container.html',
+    controller: function ($scope, appDataService, $route,$location) {
+        $scope.keywords = [];
+
+        this.$onInit = function () {
+            if (this.type === "movie") {
+                appDataService.getMovieKeywords($route.current.params.movieId).then(function (data) {
+                    $scope.keywords=data
+                }, function (error) {
+                    console.error(error)
+                });
+            } else if (this.type === "tv") {
+                appDataService.getTvShowKeywords($route.current.params.tvShowId).then(function (data) {
+                    $scope.keywords=data
+                }, function (error) {
+                    console.error(error)
+                });
+            }
+        }
+
+        $scope.onKeywordClick=function(keyword){
+            $location.path(`/keyword/${keyword.id}/${keyword.name}` );
+        }
+    },
+    bindings: { type: '@' },
 });
 
 const movieText = "Movies"
