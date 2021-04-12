@@ -43,8 +43,6 @@ angular.module('movieApp').component('trendingMovies', {
         }
 
         $scope.onTrendingItemClick = function (id) {
-            // $location.replace()
-            // $location.url(`/movie/${id}`);
             $location.path(`/movie/${id}`)
         }
     }

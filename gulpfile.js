@@ -13,8 +13,8 @@ gulp.task('minify-css', () => {
 
  
 gulp.task('scripts', function() {
-  return gulp.src(['./lib/jquery.min.js','./lib/angular.min.js','./lib/angular.routes.min.js',
-  './lib/popper.min.js','./lib/boostrap.min.js',
+  return gulp.src(['./lib/jquery.min.js','./lib/popper.min.js','./lib/boostrap.min.js',
+  './lib/angular.min.js','./lib/angular.routes.min.js',
   './app.module.js', './app.routes.js', 
   './app.controller.js','./services/*.js','./pages/**/*.js',
   './components/**/*.js','./directives/js/*.js'])

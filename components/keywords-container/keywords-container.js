@@ -20,8 +20,6 @@ angular.module('movieApp').component('keywordsContainer', {
         }
 
         $scope.onKeywordClick=function(keyword){
-            // $location.replace()
-            // $location.url(`/keyword/${keyword.id}/${keyword.name}` );
             $location.path(`/keyword/${keyword.id}/${keyword.name}` );
         }
     },

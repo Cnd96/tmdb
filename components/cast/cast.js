@@ -19,8 +19,6 @@ angular.module('movieApp').component('cast', {
             }
         }
         $scope.onPersonCardClick = function (id) {
-            // $location.replace()
-            // $location.url(`/person/${id}`);
             $location.path(`/person/${id}`);
         }
     },

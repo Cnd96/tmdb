@@ -42,8 +42,6 @@ angular.module('movieApp').controller('SearchController',["$scope","$route","$lo
 	}
 
 	$scope.onMovieCardClick = function (id) {
-		// $location.replace()
-		// $location.url(`/${$scope.currentActive}/${id}`);
 		$location.path(`/${$scope.currentActive}/${id}`)
 	}
 }]);

@@ -6,7 +6,7 @@ angular.module('movieApp').component('popularMovies', {
     controller: function ($scope, appDataService, $location) {
         const getPopularTvShows=function(){
             appDataService.getPopularTvShows().then(function (data) {
-                
+                console.log(data)
                 $scope.popularData = data
                 $scope.$apply()
             }, function (error) {

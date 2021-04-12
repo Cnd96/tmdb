@@ -24,8 +24,6 @@ angular.module('movieApp').controller('KeywordController',["$scope","$route","$l
     }
 
     $scope.onMovieCardClick = function (id) {
-		// $location.replace()
-		// $location.url(`/movie/${id}`);
         $location.path(`/movie/${id}`)
 	}
 }]);
