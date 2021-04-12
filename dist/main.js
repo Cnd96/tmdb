@@ -420,7 +420,7 @@ angular.module('movieApp').controller('AppController', function ($scope, $locati
     
 });
 
-angular.module('movieApp').factory('appDataService', function (movieDbServices) {
+angular.module('movieApp').factory('appDataService', function (movieDbServices,dynamicCachingService) {
     const movieText = "movie", tvText = "tv", personText = "person";
 
     let popularMovies = [], popularTvShows = [],trendingMovieToday=[],trendingMoviesThisWeek=[];
@@ -433,7 +433,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                     movieDbServices.getPopularMovies().then(function (data) {
-                    popularMovies = data.results.map(movie => new MovieTvOverview(movie))
+                    popularMovies = data.data.results.map(movie => new MovieTvOverview(movie))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(popularMovies)
                 }, function (error) {
                     reject(error);
@@ -450,7 +451,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                     movieDbServices.getTrendingMoviesToday().then(function (data) {
-                    trendingMovieToday = data.results.map(movie => new MovieTvOverview(movie))
+                    trendingMovieToday = data.data.results.map(movie => new MovieTvOverview(movie))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(trendingMovieToday)
                 }, function (error) {
                     reject(error);
@@ -467,7 +469,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                     movieDbServices.getTrendingMoviesThisWeek().then(function (data) {
-                    trendingMoviesThisWeek = data.results.map(movie => new MovieTvOverview(movie))
+                    trendingMoviesThisWeek = data.data.results.map(movie => new MovieTvOverview(movie))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(trendingMoviesThisWeek)
                 }, function (error) {
                     reject(error);
@@ -484,7 +487,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                 movieDbServices.getPopularTvShows().then(function (data) {
-                    popularTvShows = data.results.map(tv => new MovieTvOverview(tv))
+                    popularTvShows = data.data.results.map(tv => new MovieTvOverview(tv))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(popularTvShows)
                 }, function (error) {
                     reject(error);
@@ -622,6 +626,21 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
     };
 });
 
+angular.module('movieApp').factory('dynamicCachingService', function (movieDbServices) {
+    let cacheDynamicData=function(url){
+        if('caches'in window){
+            caches.open('dynamic')
+            .then(cache => {
+              cache.add(url);
+            })
+        }
+    }
+    return {
+        cacheDynamicData
+    };
+
+
+})
 const languageData=[
     {
         "iso_639_1": "bi",
@@ -1711,7 +1730,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}movie/popular?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
@@ -1723,7 +1742,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}tv/popular?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
@@ -1809,7 +1828,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}trending/movie/day?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
@@ -1821,7 +1840,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}trending/movie/week?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
@@ -2178,7 +2197,6 @@ angular.module('movieApp').component('popularMovies', {
     controller: function ($scope, appDataService, $location) {
         const getPopularTvShows=function(){
             appDataService.getPopularTvShows().then(function (data) {
-                console.log(data)
                 $scope.popularData = data
                 $scope.$apply()
             }, function (error) {

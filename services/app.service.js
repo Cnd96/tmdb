@@ -1,5 +1,5 @@
 
-angular.module('movieApp').factory('appDataService', function (movieDbServices) {
+angular.module('movieApp').factory('appDataService', function (movieDbServices,dynamicCachingService) {
     const movieText = "movie", tvText = "tv", personText = "person";
 
     let popularMovies = [], popularTvShows = [],trendingMovieToday=[],trendingMoviesThisWeek=[];
@@ -12,7 +12,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                     movieDbServices.getPopularMovies().then(function (data) {
-                    popularMovies = data.results.map(movie => new MovieTvOverview(movie))
+                    popularMovies = data.data.results.map(movie => new MovieTvOverview(movie))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(popularMovies)
                 }, function (error) {
                     reject(error);
@@ -29,7 +30,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                     movieDbServices.getTrendingMoviesToday().then(function (data) {
-                    trendingMovieToday = data.results.map(movie => new MovieTvOverview(movie))
+                    trendingMovieToday = data.data.results.map(movie => new MovieTvOverview(movie))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(trendingMovieToday)
                 }, function (error) {
                     reject(error);
@@ -46,7 +48,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                     movieDbServices.getTrendingMoviesThisWeek().then(function (data) {
-                    trendingMoviesThisWeek = data.results.map(movie => new MovieTvOverview(movie))
+                    trendingMoviesThisWeek = data.data.results.map(movie => new MovieTvOverview(movie))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(trendingMoviesThisWeek)
                 }, function (error) {
                     reject(error);
@@ -63,7 +66,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices) 
             }
             else {
                 movieDbServices.getPopularTvShows().then(function (data) {
-                    popularTvShows = data.results.map(tv => new MovieTvOverview(tv))
+                    popularTvShows = data.data.results.map(tv => new MovieTvOverview(tv))
+                    dynamicCachingService.cacheDynamicData(data.url)
                     resolve(popularTvShows)
                 }, function (error) {
                     reject(error);

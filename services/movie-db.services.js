@@ -9,7 +9,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}movie/popular?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
@@ -21,7 +21,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}tv/popular?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
@@ -107,7 +107,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}trending/movie/day?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
@@ -119,7 +119,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}trending/movie/week?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }
