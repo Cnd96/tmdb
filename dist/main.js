@@ -1931,22 +1931,6 @@ angular.module('movieApp').controller('KeywordController',["$scope","$route","$l
         $location.path(`/movie/${id}`)
 	}
 }]);
-angular.module('movieApp').controller('MainController',["$scope","$location","$window" ,function ($scope, $location, $window) {
-    $window.scrollTo(0, 0);
-    $scope.searchResult = "";
-    $scope.searchClicked = function () {
-        if ($scope.searchResult.length == 0) {
-            alert("Empty search")
-        } else {
-            $location.replace()
-            $location.url(`/search?query=${$scope.searchResult}`);
-        }
-    }
-    
-}]);
-
-
-
 angular.module('movieApp').controller('MovieController',["$scope","$route","appDataService","$window" , function ($scope, $route,appDataService,$window) {
     $window.scrollTo(0, 0);
     const MOVIEID = $route.current.params.movieId
@@ -1990,6 +1974,22 @@ angular.module('movieApp').controller('MovieController',["$scope","$route","appD
   
 
 }]);
+angular.module('movieApp').controller('MainController',["$scope","$location","$window" ,function ($scope, $location, $window) {
+    $window.scrollTo(0, 0);
+    $scope.searchResult = "";
+    $scope.searchClicked = function () {
+        if ($scope.searchResult.length == 0) {
+            alert("Empty search")
+        } else {
+            $location.replace()
+            $location.url(`/search?query=${$scope.searchResult}`);
+        }
+    }
+    
+}]);
+
+
+
 angular.module('movieApp').controller('PersonController',[ "$scope","$route","appDataService","$window" , function ($scope, $route, appDataService, $window) {
     $window.scrollTo(0, 0);
     const PERSONID = $route.current.params.personId

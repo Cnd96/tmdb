@@ -1,9 +1,8 @@
-const STATICCACHENAME = 'static-v1.30';
+const STATICCACHENAME = 'static-v2.01';
 const DYNAMIC='dynamic';
 
 const STATICCACHEASSETS = [
   '/',
-  './#!/main',
   './index.html#!/main',
   './pages/main/main-page.html',
   './components/popular/popular.html',
