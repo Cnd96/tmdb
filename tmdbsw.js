@@ -1,4 +1,4 @@
-const STATICCACHENAME = 'static-v2.03';
+const STATICCACHENAME = 'static-v2.10';
 const DYNAMIC='dynamic';
 
 const STATICCACHEASSETS = [
