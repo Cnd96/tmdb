@@ -33,7 +33,7 @@ angular.module('movieApp').factory('movieDbServices', function ($http, $q) {
             return $http.get(`${baseURL}movie/${id}?api_key=${apiKey}&language=${language}`)
                 .then(function (response) {
                     if (typeof response.data === 'object') {
-                        return response.data;
+                        return {data:response.data,url:response.config.url};
                     } else {
                         return $q.reject(response.data);
                     }

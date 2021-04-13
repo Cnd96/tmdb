@@ -1,14 +1,21 @@
-const STATICCACHENAME = 'static-v2.10';
+const STATICCACHENAME = 'static-v4.00';
 const DYNAMIC='dynamic';
+
 
 const STATICCACHEASSETS = [
   '/',
   './index.html#!/main',
   './pages/main/main-page.html',
+  './pages/movie/movie-page.html',
+  './pages/movie//movie-page.html',
+  './components/cast/cast.html',
+  './components/keywords-container/keywords-container.html',
   './components/popular/popular.html',
   './components/trending-movies/trending-movies.html',
+  './directives/crew-container.directive.html',
   './directives/toggle-button.directive.html',
   './directives/movie-tv-vertical-card.directive.html',
+  './directives/people-vertical-card.directive.html',
   './app.js',
   './assets/main2.jpg',
   './dist/main.css',

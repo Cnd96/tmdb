@@ -1,5 +1,5 @@
 
-angular.module('movieApp').factory('appDataService', function (movieDbServices,dynamicCachingService) {
+angular.module('movieApp').factory('appDataService', function (movieDbServices,dynamicCachingService,iDbService) {
     const movieText = "movie", tvText = "tv", personText = "person";
 
     let popularMovies = [], popularTvShows = [],trendingMovieToday=[],trendingMoviesThisWeek=[];
@@ -12,9 +12,9 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             }
             else {
                     movieDbServices.getPopularMovies().then(function (data) {
-                    popularMovies = data.data.results.map(movie => new MovieTvOverview(movie))
-                    
-                    dynamicCachingService.cacheDynamicDataWithImages(data.url,popularMovies.map(M=>'https://image.tmdb.org/t/p/w300'+M.posterPath))
+                    popularMovies = data.data.results.map(movie => new MovieTvOverview(movie)) 
+                    dynamicCachingService.cacheDynamicImages(popularMovies.map(M=>M.posterW300Path))
+                    dynamicCachingService.cacheDynamicUrl(data.url)
                     resolve(popularMovies)
                 }, function (error) {
                     reject(error);
@@ -32,7 +32,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             else {
                     movieDbServices.getTrendingMoviesToday().then(function (data) {
                     trendingMovieToday = data.data.results.map(movie => new MovieTvOverview(movie))
-                    dynamicCachingService.cacheDynamicDataWithImages(data.url,trendingMovieToday.map(M=>'https://image.tmdb.org/t/p/w300'+M.posterPath))
+                    dynamicCachingService.cacheDynamicImages(trendingMovieToday.map(M=>M.posterW300Path))
+                    dynamicCachingService.cacheDynamicUrl(data.url)
                     resolve(trendingMovieToday)
                 }, function (error) {
                     reject(error);
@@ -50,7 +51,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             else {
                     movieDbServices.getTrendingMoviesThisWeek().then(function (data) {
                     trendingMoviesThisWeek = data.data.results.map(movie => new MovieTvOverview(movie))
-                    dynamicCachingService.cacheDynamicDataWithImages(data.url,trendingMoviesThisWeek.map(M=>'https://image.tmdb.org/t/p/w300'+M.posterPath))
+                    dynamicCachingService.cacheDynamicImages(trendingMoviesThisWeek.map(M=>M.posterW300Path))
+                    dynamicCachingService.cacheDynamicUrl(data.url)
                     resolve(trendingMoviesThisWeek)
                 }, function (error) {
                     reject(error);
@@ -68,7 +70,8 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
             else {
                 movieDbServices.getPopularTvShows().then(function (data) {
                     popularTvShows = data.data.results.map(tv => new MovieTvOverview(tv))
-                    dynamicCachingService.cacheDynamicDataWithImages(data.url,popularTvShows.map(T=>'https://image.tmdb.org/t/p/w300'+T.posterPath))
+                    dynamicCachingService.cacheDynamicImages(popularTvShows.map(T=>T.posterW300Path))
+                    dynamicCachingService.cacheDynamicUrl(data.url)
                     resolve(popularTvShows)
                 }, function (error) {
                     reject(error);
@@ -78,19 +81,44 @@ angular.module('movieApp').factory('appDataService', function (movieDbServices,d
     };
 
     let getSingleMovieDetails = function (id) {
-        return movieDbServices.getOneMovieDetails(id).then(function (data) {
-            return new Movie(data)
-        }, function (error) {
-            return error
-        });
+        return new Promise((resolve, reject) => {
+            iDbService.getMovie(id).then(function(movie){
+                if(movie==undefined){
+                    movieDbServices.getOneMovieDetails(id).then(function (data) {
+                        const dataToReturn=new Movie(data.data)
+                        iDbService.saveMovie(dataToReturn)
+                        dynamicCachingService.cacheDynamicImages([dataToReturn.posterPath,dataToReturn.backdropPath])
+                        resolve(dataToReturn)
+                    }, function (error) {
+                        reject(error);
+                    });
+                }
+                else{
+                    resolve(movie)
+                }
+            })
+        })
+         
     }
 
     let getMovieCredits=function(id){
-        return movieDbServices.getMovieCredits(id).then(function (data) {
-            return {crew:data.crew.map(c => new Crew(c)),cast:data.cast.map(c => new PersonOverview(c))} 
-        }, function (error) {
-            return error
-        });
+        return new Promise((resolve, reject) => {
+            iDbService.getMovieCredits(id).then(function(credits){
+                if(credits==undefined){
+                    movieDbServices.getMovieCredits(id).then(function (data) {
+                        const dataToReturn={crew:data.crew.map(c => new Crew(c)),cast:data.cast.map(c => new PersonOverview(c))} 
+                        iDbService.saveMovieCredits({id:parseInt(id),data:dataToReturn})
+                        dynamicCachingService.cacheDynamicImages(dataToReturn.cast.map(T=>T.posterW138Path))
+                        resolve(dataToReturn)
+                    }, function (error) {
+                        reject(error);
+                    });
+                }
+                else{
+                    resolve(credits.data)
+                }
+            })
+        })
     }
 
     let getTVShowCredits=function(id){

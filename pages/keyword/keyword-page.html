@@ -11,7 +11,7 @@
         <div class="app-container-box" >  
             <div ng-repeat="item in results" style="cursor: pointer;">
                 <movie-tv-horizontal-card title="{{item.title}}" ng-click="onMovieCardClick(item.id)" ng-click="onMovieCardClick(item.id)"
-                    releasedate="{{item.realeseDate}}" overview="{{item.overview}}" posterpath="{{item.posterPath}}" />
+                    releasedate="{{item.realeseDate}}" overview="{{item.overview}}" posterpath="{{item.posterW32Path}}" />
             </div>
             <pagination-section onpageclick="onPageClick(pageNumber)" currentpage="{{currentPage}}" totalpages="{{totalPages}}"></pagination-section>
             

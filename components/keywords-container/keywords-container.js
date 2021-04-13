@@ -7,6 +7,7 @@ angular.module('movieApp').component('keywordsContainer', {
             if (this.type === "movie") {
                 appDataService.getMovieKeywords($route.current.params.movieId).then(function (data) {
                     $scope.keywords=data
+                    // $scope.keywords=[{id: 3801, name: "space travel", $$hashKey: "object:5"}]
                 }, function (error) {
                     console.error(error)
                 });

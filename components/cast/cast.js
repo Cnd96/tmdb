@@ -7,6 +7,7 @@ angular.module('movieApp').component('cast', {
             if (this.type === "movie") {
                 appDataService.getMovieCredits($route.current.params.movieId).then(function (data) {
                     $scope.cast = data.cast
+                    $scope.$apply()
                 }, function (error) {
                     console.log(error)
                 });

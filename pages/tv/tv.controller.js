@@ -24,10 +24,10 @@ angular.module('movieApp').controller('TvController',["$scope","$route","appData
 
     function calculateInnerWidth(){
         if($window.innerWidth<767){
-         angular.element('#tv-bg-poster-id').css('background-image', `linear-gradient(to right, rgba(var(--${$scope.linearColor}), 1), rgba(var(--${$scope.linearColor}), 0.05)),url('http://image.tmdb.org/t/p/w780${$scope.tvShowData.backdropPath}')`);
+         angular.element('#tv-bg-poster-id').css('background-image', `linear-gradient(to right, rgba(var(--${$scope.linearColor}), 1), rgba(var(--${$scope.linearColor}), 0.05)),url('${$scope.tvShowData.backdropPath}')`);
          
         }else{
-         angular.element('#tv-bg-poster-id').css('background-image', `linear-gradient(to right, rgba(var(--${$scope.linearColor}), 1), rgba(var(--${$scope.linearColor}), 0.75)),url('http://image.tmdb.org/t/p/w780${$scope.tvShowData.backdropPath}')`);
+         angular.element('#tv-bg-poster-id').css('background-image', `linear-gradient(to right, rgba(var(--${$scope.linearColor}), 1), rgba(var(--${$scope.linearColor}), 0.75)),url('${$scope.tvShowData.backdropPath}')`);
         }
     }
     angular.element($window).on('resize', calculateInnerWidth);
