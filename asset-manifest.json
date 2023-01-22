@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9f9e7eda.css",
+    "main.js": "/static/js/main.841ceb10.js",
+    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/background.jpg": "/static/media/background.ed82e9c5a41c86aef368.jpg",
+    "static/media/itstaffm.png": "/static/media/itstaffm.2091912c24a0690cf610.png",
+    "static/media/ecomm.png": "/static/media/ecomm.4fa5186b425f2c8fd115.png",
+    "static/media/itstaff.jpg": "/static/media/itstaff.3c33ae15e9b5402fc96d.jpg",
+    "static/media/web2.png": "/static/media/web2.35e3528ebd4473623fb4.png",
+    "static/media/mobile.png": "/static/media/mobile.273a08221814db25f246.png",
+    "static/media/staff1.webp": "/static/media/staff1.54e3eaf2c0bffa224156.webp",
+    "static/media/API1.png": "/static/media/API1.9cdfce5cc64536f36bfd.png",
+    "static/media/API1.jpg": "/static/media/API1.7abf8351b7962bf69981.jpg",
+    "static/media/mobileapp.jpg": "/static/media/mobileapp.675888edf94acfe716f7.jpg",
+    "static/media/api2.jpg": "/static/media/api2.c279aa5c4ac928a500f8.jpg",
+    "static/media/web.jpg": "/static/media/web.192d89411ba2ae1efaeb.jpg",
+    "static/media/web1.webp": "/static/media/web1.87a4d1de935199976703.webp",
+    "static/media/mobile2.webp": "/static/media/mobile2.91ddfad24dce17878462.webp",
+    "static/media/mobile1.webp": "/static/media/mobile1.602f227bd4632f38a26f.webp",
+    "static/media/staff2.webp": "/static/media/staff2.82ee78cefdcd5ecab803.webp",
+    "static/media/ecom1.webp": "/static/media/ecom1.bfa2cdc58b59ca1fd3b7.webp",
+    "static/media/one.png": "/static/media/one.29809c4249bfb7406db9.png",
+    "static/media/ecom3.webp": "/static/media/ecom3.b309b5e45f111826ded2.webp",
+    "static/media/itstaff.svg": "/static/media/itstaff.2b3e6ce82c19f13dc3f9b70358caa253.svg",
+    "static/media/ecom.svg": "/static/media/ecom.e1abcec23e70fa3ce54868543672e6d0.svg",
+    "static/media/web.svg": "/static/media/web.a2feab7ddd3614a1574656a077c5090e.svg",
+    "static/media/mobile.svg": "/static/media/mobile.a9b2a49ee03d174b6f6fc3406d646cc9.svg",
+    "index.html": "/index.html",
+    "main.9f9e7eda.css.map": "/static/css/main.9f9e7eda.css.map",
+    "main.841ceb10.js.map": "/static/js/main.841ceb10.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9f9e7eda.css",
+    "static/js/main.841ceb10.js"
+  ]
+}
